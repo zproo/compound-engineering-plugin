@@ -252,19 +252,16 @@ Recommended companion for richer blocking questions:
 pi install npm:pi-ask-user
 ```
 
-### Gemini CLI
+### Antigravity CLI (`agy`)
 
-Install the native Gemini extension from this repository:
-
-```bash
-gemini extensions install https://github.com/EveryInc/compound-engineering-plugin
-```
-
-Update it later with:
+Google has replaced the consumer Gemini CLI with [Antigravity CLI](https://antigravity.google) (`agy`), which still runs on Gemini models. Unlike Gemini CLI, `agy` installs plugins from a **local checkout** (not a repository URL), so clone this repository and install the bundled `.agy` plugin directory:
 
 ```bash
-gemini extensions update compound-engineering
+git clone https://github.com/EveryInc/compound-engineering-plugin
+agy plugin install ./compound-engineering-plugin/.agy
 ```
+
+`agy` also loads `GEMINI.md` workspace context from the checkout.
 
 ### Existing Installs
 
@@ -341,15 +338,17 @@ Restart OpenCode after changing `opencode.json`.
 pi -e "$PWD"
 ```
 
-**Gemini CLI**
+**Antigravity CLI (`agy`)**
 
 ```bash
-gemini extensions install "$PWD"
+agy plugin install "$PWD/.agy"
 ```
+
+`agy` installs the bundled `.agy` plugin directory from your checkout and loads `GEMINI.md` workspace context.
 
 ## Limitations
 
-OpenCode, Pi, and Gemini use native package/plugin loading from this repository. The Bun CLI remains for repository development and converter maintenance, not normal installation.
+OpenCode and Pi use native package/plugin loading from this repository. The Bun CLI remains for repository development and converter maintenance, not normal installation.
 
 Release versions are owned by release automation. Routine feature PRs should not hand-bump plugin or marketplace manifest versions.
 
